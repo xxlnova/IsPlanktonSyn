@@ -1,8 +1,8 @@
 # 🌊 IsPlanktonSyn: A Large-Scale Full-Color Synthetic Benchmark for In-Situ Plankton Recognition
 
 [![Paper](https://img.shields.io/badge/Paper-PDF-red)](#) 
-[![Dataset Scale](https://img.shields.io/badge/Images-99,141-green)](#dataset) 
-[![Categories](https://img.shields.io/badge/Species-117-orange)](#dataset)
+[![Dataset Scale](https://img.shields.io/badge/Images-89,712-green)](#dataset) 
+[![Categories](https://img.shields.io/badge/Species-116-orange)](#dataset)
 [![Field](https://img.shields.io/badge/Field-Ocean_Ecology-blue)](#) 
 [![License](https://img.shields.io/badge/License-Academic_Use-lightgrey)](#license)
 
@@ -25,10 +25,11 @@ In-situ plankton imaging is critical for marine ecosystem monitoring. To avoid p
 
 ## 📊 Dataset Highlights
 
-*   **Massive Scale:** **99,141** high-quality, full-color plankton images.
-*   **Broad Taxonomic Coverage:** **117** categories encompassing both phytoplankton and complex zooplankton.
+*   **Massive Scale:** **89,712** high-quality, full-color plankton images.
+*   **Broad Taxonomic Coverage:** **116** categories encompassing 31 phytoplankton and 85 zooplankton taxa.
 *   **High Visual Fidelity:** Colors are synthesized based on real biological priors without distorting the native morphological features or in-situ backgrounds.
-*   **Standardized Splits:** Pre-configured Training/Validation/Testing splits to ensure fair and reproducible benchmark evaluations.
+*   **Standardized Prompts:** Includes a standardized, biologically plausible prompt construction template (powered by Qwen3-VL) to strictly guide the multimodal diffusion process.
+*   **Standardized Splits:** Pre-configured Training/Validation/Testing splits (7:1:2 ratio) to ensure fair and reproducible benchmark evaluations.
 *   **Proven Effectiveness:** Significantly boosts the fine-grained recognition performance of downstream tasks and supports synthetic-to-real real-world deployment.
 
 ---
@@ -42,6 +43,16 @@ The complete dataset, including full labeled images, category split files, and m
 *   **Extraction Code:** `c6np`
 
 > **Note:** If you are accessing the dataset from outside of China and encounter issues with Baidu Netdisk, please open an [Issue](#) and we will provide alternative download links (e.g., Google Drive / HuggingFace) in the future.
+
+---
+
+## ⚙️ Environment & Dependencies
+
+To run the **IsColor** generation pipeline from scratch, you will need the following dependencies and hardware setup:
+
+*   **Core Models:** Stable Diffusion v1.5, pre-trained Canny and Tile ControlNets, and IP-Instruct encoder.
+*   **Prompt Engine:** Qwen3-VL (for automated species-specific prompt generation).
+*   **Hardware:** The pipeline and downstream baselines were evaluated and executed on a single server equipped with an NVIDIA A100 GPU.
 
 ---
 
