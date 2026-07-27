@@ -1,44 +1,61 @@
-# IsPlanktonSyn: Large-Scale Full-Color Plankton Recognition Dataset
-[![Ocean Vision](https://img.shields.io/badge/Field-Ocean%20Ecology-blue)]
-[![Dataset Scale](https://img.shields.io/badge/Images-99141-green)]
-[![Categories](https://img.shields.io/badge/Species-117-orange)]
-[![License](https://img.shields.io/badge/License-Academic%20Use-lightgrey)]
+# 🌊 IsPlanktonSyn: A Large-Scale Full-Color Synthetic Benchmark for In-Situ Plankton Recognition
 
-## Overview
-In-situ plankton imaging and accurate species recognition are fundamental to ocean-ecosystem monitoring. However, underwater imaging platforms using red-to-near-infrared illumination only output grayscale images, losing critical color features for classification, which leads to severe abundance bias caused by phototaxis aggregation.
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](#) 
+[![Dataset Scale](https://img.shields.io/badge/Images-99,141-green)](#dataset) 
+[![Categories](https://img.shields.io/badge/Species-117-orange)](#dataset)
+[![Field](https://img.shields.io/badge/Field-Ocean_Ecology-blue)](#) 
+[![License](https://img.shields.io/badge/License-Academic_Use-lightgrey)](#license)
 
-To solve this problem, we propose a training-free multimodal diffusion colorization method and construct **IsPlanktonSyn**, a large-scale full-color plankton dataset. With one single reference color image of the target plankton, our diffusion model can restore high-fidelity color information from grayscale underwater shots.
+> **[IsPlanktonSyn: A Large-Scale Full-Color Synthetic Benchmark and Generation Pipeline for In-Situ Plankton Recognition](#)**<br>
+> Yunlong Liu, Tao Zhou, Zekai Zhang, Qinghui Chen, Pengfei Zhu, Cong Liu, Dagang Li, Da Chen, Jinglin Zhang*, Jianping Li<br>
 
-### Dataset Core Information
-- Dataset Name: IsPlanktonSyn
-- Total Images: 99,141 high-quality color plankton images
-- Species Coverage: 117 categories (zooplankton + phytoplankton)
-- Core Value: Compensates the lack of species diversity and rich color annotations in existing plankton datasets; significantly boosts performance of all mainstream recognition algorithms.
+This is the official repository for **IsPlanktonSyn**, a large-scale, biologically plausible full-color benchmark designed to break the modality bottleneck in in-situ plankton recognition. 
 
-This dataset provides high-quality labeled full-color visual data for training plankton recognition models, and builds new data & technical support for underwater image enhancement and intelligent ocean ecological monitoring.
+---
 
-## Dataset Download
-The complete dataset is shared via Baidu Netdisk.
-> File Name: IsPlanktonsyn
-- Link: https://pan.baidu.com/s/1SzQtxgz5eaSizKLonr6xEA
-- Extraction Code: `c6np`
+## 📖 Overview
 
-### Download Tips
-1. Copy the link to your browser and open Baidu Netdisk web/client;
-2. Input the extraction code `c6np` to access the compressed dataset package;
-3. The archive contains full labeled images, category split files and readme metadata.
+In-situ plankton imaging is critical for marine ecosystem monitoring. To avoid perturbing natural plankton behavior (phototaxis aggregation), modern underwater imaging systems typically employ near-infrared (NIR) illumination. However, this produces strictly **grayscale observations**, discarding crucial species-specific chromatic cues needed for fine-grained visual categorization (FGVC).
 
-## Key Contributions
-1. Built the first large-scale full-color plankton dataset covering 117 plankton taxa;
-2. Solves the color loss problem of in-situ near-infrared underwater imaging;
-3. Validated consistent performance gain of multiple recognition backbones on IsPlanktonSyn;
-4. Supports downstream tasks: plankton classification, underwater grayscale image colorization, marine ecological quantitative monitoring.
+**Our Solution:** 
+1. **IsColor (Generation Pipeline):** We propose a training-free multimodal diffusion colorization method. Given a single reference color image, IsColor injects biologically plausible color priors into grayscale in-situ shots while rigorously preserving morphological structures.
+2. **IsPlanktonSyn (Dataset):** Using IsColor, we constructed a massive synthetic full-color dataset. Extensive experiments demonstrate that models trained on IsPlanktonSyn consistently and significantly outperform their grayscale counterparts across all mainstream CNN and Transformer architectures.
 
-## Usage Instructions
-1. Unzip the downloaded dataset file;
-2. The folder structure is organized by plankton species ID with unified label mapping files;
-3. Train your classification/colorization model directly on the annotated full-color images;
-4. For grayscale colorization experiments, match each color sample with corresponding grayscale input as described in our paper.
+---
 
-## Citation
-If you use the IsPlanktonSyn dataset in your research, please cite our work:
+## 📊 Dataset Highlights
+
+*   **Massive Scale:** **99,141** high-quality, full-color plankton images.
+*   **Broad Taxonomic Coverage:** **117** categories encompassing both phytoplankton and complex zooplankton.
+*   **High Visual Fidelity:** Colors are synthesized based on real biological priors without distorting the native morphological features or in-situ backgrounds.
+*   **Standardized Splits:** Pre-configured Training/Validation/Testing splits to ensure fair and reproducible benchmark evaluations.
+*   **Proven Effectiveness:** Significantly boosts the fine-grained recognition performance of downstream tasks and supports synthetic-to-real real-world deployment.
+
+---
+
+## 📥 Download IsPlanktonSyn
+
+The complete dataset, including full labeled images, category split files, and metadata, is currently hosted on Baidu Netdisk.
+
+*   **Platform:** Baidu Netdisk (百度网盘)
+*   **Link:** [https://pan.baidu.com/s/1SzQtxgz5eaSizKLonr6xEA](https://pan.baidu.com/s/1SzQtxgz5eaSizKLonr6xEA)
+*   **Extraction Code:** `c6np`
+
+> **Note:** If you are accessing the dataset from outside of China and encounter issues with Baidu Netdisk, please open an [Issue](#) and we will provide alternative download links (e.g., Google Drive / HuggingFace) in the future.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Data Preparation
+After downloading and extracting the dataset, the folder structure is organized intuitively by plankton species ID for seamless integration with PyTorch's `ImageFolder` or custom dataloaders.
+
+```text
+IsPlanktonSyn/
+├── train/
+│   ├── class_001/
+│   ├── class_002/
+│   └── ...
+├── val/
+├── test/
+└── meta_data.json  # Label mapping and extra metadata
