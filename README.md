@@ -36,13 +36,14 @@ In-situ plankton imaging is critical for marine ecosystem monitoring. To avoid p
 
 ## 📥 Download IsPlanktonSyn
 
-The complete dataset, including full labeled images, category split files, and metadata, is currently hosted on Baidu Netdisk.
+The complete dataset, including full labeled images, category split files, and metadata, is available on **Kaggle** and **Baidu Netdisk**.
 
-*   **Platform:** Baidu Netdisk (百度网盘)
+### Option 1: Kaggle (Recommended for Global Users)
+*   **Link:** [Kaggle Dataset: IsPlanktonSyn](https://www.kaggle.com/datasets/xlnovax/isplanktonsyn)
+
+### Option 2: Baidu Netdisk (百度网盘)
 *   **Link:** [https://pan.baidu.com/s/1SzQtxgz5eaSizKLonr6xEA](https://pan.baidu.com/s/1SzQtxgz5eaSizKLonr6xEA)
 *   **Extraction Code:** `c6np`
-
-> **Note:** If you are accessing the dataset from outside of China and encounter issues with Baidu Netdisk, please open an [Issue](#) and we will provide alternative download links (e.g., Google Drive / HuggingFace) in the future.
 
 ---
 
@@ -68,5 +69,4 @@ IsPlanktonSyn/
 │   ├── class_002/
 │   └── ...
 ├── val/
-├── test/
-└── meta_data.json  # Label mapping and extra metadata
+└── test/
